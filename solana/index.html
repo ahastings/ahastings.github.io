@@ -1,0 +1,155 @@
+<!DOCTYPE HTML>
+<!--
+  Stellar by HTML5 UP
+  html5up.net | @ajlkn
+  Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html lang="en">
+  <head>
+    <title>Solana Conflict Microscope | Arman Hastings</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="A read-only Solana developer tool for exploring declared account contention, potential parallelism, and estimated conflict-free waves through reproducible interactive reports." />
+    <meta property="og:title" content="Solana Conflict Microscope | Arman Hastings" />
+    <meta property="og:description" content="Inspect declared account contention and estimated execution waves with offline examples, interactive reports, and verifiable JSON evidence. Read-only. MIT." />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://ahastings.github.io/solana/" />
+    <meta property="og:image" content="https://ahastings.github.io/mstile-150x150.png" />
+    <meta property="og:image:alt" content="Arman Hastings, creator of Solana Conflict Microscope" />
+    <meta name="twitter:card" content="summary" />
+    <link rel="stylesheet" href="../assets/css/main.css" />
+    <link rel="stylesheet" href="../assets/css/portfolio.css" />
+    <noscript><link rel="stylesheet" href="../assets/css/noscript.css" /></noscript>
+    <link rel="apple-touch-icon" href="../apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="../favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png" />
+    <meta name="theme-color" content="#292b45" />
+  </head>
+  <body class="portfolio-site is-preload">
+    <a class="skip-link" href="#overview">Skip to project overview</a>
+    <div id="wrapper">
+      <header id="header" class="alt project-header">
+        <a class="return-link" href="../">&larr; Arman Hastings</a>
+        <p class="eyebrow">Solana developer tool &middot; v1.0</p>
+        <h1>Solana Conflict Microscope</h1>
+        <p class="hero-summary">See which declared accounts connect transactions, why they conflict, and what that implies for potential parallelism.</p>
+        <p>Reproducible fixtures. Inspectable evidence. Standalone interactive reports.</p>
+        <ul class="actions hero-actions">
+          <li><a class="button primary" href="https://ahastings.github.io/solana-conflict-microscope/">Explore the demo</a></li>
+          <li><a class="button" href="https://github.com/ahastings/solana-conflict-microscope">View source on GitHub</a></li>
+        </ul>
+      </header>
+
+      <nav id="nav" aria-label="Project sections">
+        <ul>
+          <li><a class="active" href="#overview">Overview</a></li>
+          <li><a href="#workflow">Try it locally</a></li>
+          <li><a href="#verification">Evidence &amp; limits</a></li>
+        </ul>
+      </nav>
+
+      <div id="main">
+        <section id="overview" class="main project-overview">
+          <header class="major">
+            <p class="eyebrow">Understand the contention</p>
+            <h2>Follow a conflict back to its accounts</h2>
+          </header>
+          <p>Two transactions have a declared account conflict when they share an account and at least one declares it writable. Read/read overlap creates no conflict edge. The microscope turns those declarations into account relationships, connected components, and estimated conflict-free waves that you can inspect transaction by transaction.</p>
+          <div class="project-tags" aria-label="Project characteristics">
+            <span>Public, read-only data</span>
+            <span>Offline fixture demo</span>
+            <span>TypeScript</span>
+            <span>MIT project code</span>
+          </div>
+
+          <h3>A concrete example: captured devnet slot 488638500</h3>
+          <div class="evidence-grid">
+            <article>
+              <h3>45 transactions</h3>
+              <p>Inspect each transaction's declared permissions, recorded outcome, and instruction evidence.</p>
+            </article>
+            <article>
+              <h3>116 declared conflict pairs</h3>
+              <p>Select an account to see which transactions share it and which pairs its permissions connect.</p>
+            </article>
+            <article>
+              <h3>15&ndash;15 full-block wave bounds</h3>
+              <p>A 15-member conflicting clique and a valid 15-wave grouping agree on the minimum for this declared-lock model.</p>
+            </article>
+            <article>
+              <h3>45 of 45 compute values recorded</h3>
+              <p>The supplied metadata totals 122,696 CU. Compute describes recorded computational work, not elapsed execution time.</p>
+            </article>
+          </div>
+          <p class="claim-note">A wave is a modeled group with no retained account conflicts. Wave counts describe estimated execution waves under the stated model; they do not reconstruct a validator's private schedule or measure runtime speedup.</p>
+
+          <h3>Explore four bundled examples</h3>
+          <ul class="example-list">
+            <li><a href="https://ahastings.github.io/solana-conflict-microscope/real-loader/report.html">Real devnet: loader buffer writes</a><p>Trace a program-buffer upload to decoded write chunks and inspect hypothetical payer and byte-range models.</p></li>
+            <li><a href="https://ahastings.github.io/solana-conflict-microscope/real-funding/report.html">Real devnet: cross-payer funding</a><p>Find different fee payers drawing from a shared funding source. Different payers alone do not establish independent application work.</p></li>
+            <li><a href="https://ahastings.github.io/solana-conflict-microscope/multi-block-upload/range-report.html">Real devnet: upload across nine blocks</a><p>Inspect payload byte ranges, gaps, overlaps, and exact instruction evidence. The captured range does not establish a complete upload lifecycle.</p></li>
+            <li><a href="https://ahastings.github.io/solana-conflict-microscope/synthetic-teaching/report.html">Synthetic teaching: shared application state</a><p>A deliberately constructed fixture illustrates application-state contention. It is labeled synthetic and is not observed network activity.</p></li>
+          </ul>
+        </section>
+
+        <section id="workflow" class="main">
+          <header class="major">
+            <p class="eyebrow">From source to a report</p>
+            <h2>Try the reproducible local workflow</h2>
+          </header>
+          <ol class="workflow-steps">
+            <li><h3>Generate the demo</h3><p>Download or clone the source, install the locked dependencies, and generate the reports from bundled fixtures. After installation, this demo works offline.</p></li>
+            <li><h3>Trace the evidence</h3><p>Search a transaction, select a shared account, or inspect a finding. Follow each relationship to declared permissions and available instruction evidence.</p></li>
+            <li><h3>Read the bounds in context</h3><p>Inspect the wave grouping and its lower-bound witness. Matching bounds establish a minimum within that model; different bounds leave the minimum unresolved.</p></li>
+          </ol>
+          <div class="quickstart">
+            <h3>Local quickstart</h3>
+            <p>Use Node.js 22.12 or newer and npm. Run these commands from the project folder:</p>
+            <pre><code>npm ci
+npm run demo</code></pre>
+            <p>Open <code>output/demo/index.html</code> in your browser. For example, the single-block loader report is written to <code>output/demo/real-loader/report.html</code>.</p>
+          </div>
+          <p>The tool analyzes public block data and writes local reports. The demo needs no wallet, API key, RPC account, database, or server.</p>
+          <ul class="actions">
+            <li><a class="button" href="https://github.com/ahastings/solana-conflict-microscope#try-it-locally">Source quickstart</a></li>
+            <li><a class="button" href="https://github.com/ahastings/solana-conflict-microscope/blob/main/docs/guides/READING-REPORTS.md">First-report walkthrough</a></li>
+          </ul>
+        </section>
+
+        <section id="verification" class="main">
+          <header class="major">
+            <p class="eyebrow">Make the scope visible</p>
+            <h2>Evidence you can check, with limits you can read</h2>
+          </header>
+          <p>The independent verifier reconstructs declared conflicts from normalized account permissions, checks connected-component membership, and verifies that every transaction appears exactly once in a conflict-free wave grouping. It checks each pair in the saved clique witness, bound claims, status counts, and recorded compute coverage. It also prints the checked file's SHA-256.</p>
+          <div class="quickstart">
+            <pre><code>npm run verify:analysis -- --analysis output/demo/real-loader/analysis.json</code></pre>
+          </div>
+          <p class="claim-note">This certificate establishes internal consistency of the supplied declared-lock evidence. It does not authenticate the source RPC data, certify semantic explanations or counterfactual assumptions, or establish validator execution. A file hash identifies the checked bytes; it does not prove their origin.</p>
+          <ul>
+            <li><strong>Compute coverage stays explicit.</strong> Recorded compute is computational work, not elapsed time. Missing compute remains unknown; a partial subtotal is not a full-block total, and comparisons suppress compute differences when coverage is incomplete.</li>
+            <li><strong>Conditional models retain their assumptions.</strong> Payer decoupling and byte-range refinement explore potential parallelism under hypothetical constraints. Their results do not establish a safe application redesign, current validator support, or a deployable performance gain.</li>
+            <li><strong>Captured and synthetic evidence stay distinct.</strong> Real examples use saved public devnet fixtures. The synthetic application-state case is teaching data. Range observation coverage and upload-lifecycle coverage are separate questions.</li>
+          </ul>
+          <p>For a broader local check, <code>npm run verify:portable</code> runs strict compilation, deterministic portable tests, fixture checks, demo generation, and the bundled reviewer workflow. Saved demo data can be checked separately with <code>npm run verify:demo</code>; rendered HTML is outside the data certificate.</p>
+          <ul class="actions">
+            <li><a class="button" href="https://github.com/ahastings/solana-conflict-microscope#verify-exported-declared-lock-evidence">Verification commands</a></li>
+            <li><a class="button" href="https://github.com/ahastings/solana-conflict-microscope/blob/main/docs/guides/REVIEWER-REPRODUCTION.md">Reviewer reproduction</a></li>
+          </ul>
+        </section>
+      </div>
+
+      <footer id="footer">
+        <p>Built by <a href="../">Arman Hastings</a>. Project code is <a href="https://github.com/ahastings/solana-conflict-microscope/blob/main/LICENSE">MIT licensed</a>; <a href="https://github.com/ahastings/solana-conflict-microscope/blob/main/docs/guides/THIRD-PARTY-INVENTORY.md">third-party material retains its own terms</a>.</p>
+        <p class="template-credit">Site theme: <a href="https://html5up.net/stellar">Stellar by HTML5 UP</a>, licensed under <a href="https://creativecommons.org/licenses/by/3.0/">CC BY 3.0</a>.</p>
+      </footer>
+    </div>
+    <script src="../assets/js/jquery.min.js"></script>
+    <script src="../assets/js/jquery.scrollex.min.js"></script>
+    <script src="../assets/js/jquery.scrolly.min.js"></script>
+    <script src="../assets/js/browser.min.js"></script>
+    <script src="../assets/js/breakpoints.min.js"></script>
+    <script src="../assets/js/util.js"></script>
+    <script src="../assets/js/main.js"></script>
+  </body>
+</html>
