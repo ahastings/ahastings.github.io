@@ -66,6 +66,11 @@ body.portfolio-site{background-color:#453e64;background-image:linear-gradient(14
 .portfolio-site .evidence-grid article{padding:1.4rem;border:1px solid #e2dceb;border-radius:.6rem;background:#faf8fd}
 .portfolio-site .evidence-grid h3{font-size:1.05rem;margin-bottom:.65rem}
 .portfolio-site .evidence-grid p{font-size:.92rem;line-height:1.75;margin:0}
+.portfolio-site .recent-work-grid{margin-bottom:0}
+.portfolio-site .recent-work-grid .eyebrow{font-size:.67rem;line-height:1.6;margin-bottom:.75rem;color:var(--portfolio-accent)}
+.portfolio-site .recent-work-grid h3{font-size:1.3rem}
+.portfolio-site .recent-work-grid p+p{margin-top:.85rem}
+.portfolio-site .recent-work-grid .project-tags{margin-bottom:1rem}
 .portfolio-site .workflow-steps{list-style:none;padding:0;margin:1.5rem 0;counter-reset:workflow}
 .portfolio-site .workflow-steps li{counter-increment:workflow;position:relative;border-left:2px solid #ddd5eb;padding:.3rem 0 1.5rem 2.3rem;margin-left:.75rem}
 .portfolio-site .workflow-steps li:before{content:counter(workflow);position:absolute;left:-.8rem;top:.3rem;background:#655899;color:#fff;border-radius:50%;width:1.6rem;height:1.6rem;font-size:.8rem;text-align:center;line-height:1.6rem}
